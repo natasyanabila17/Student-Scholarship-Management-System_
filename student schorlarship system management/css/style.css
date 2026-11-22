@@ -1,0 +1,136 @@
+/* ==========================================================
+   Student Scholarship Management System - Stylesheet
+   Sections: 1 Theme tokens | 2 Base | 3 Auth | 4 Layout | 5 Components | 6 Utilities
+   Works with Bootstrap 5.3 colour modes (data-bs-theme="light" | "dark").
+   ========================================================== */
+
+/* 1. THEME TOKENS */
+:root {
+  --brand: #4b2a8a;
+  --brand-dark: #34196a;
+  --accent: #f5b301;
+  --radius: .75rem;
+}
+[data-bs-theme="light"] {
+  --page-bg: #f6f7fb;
+  --brand-soft: #f1ecfa;
+  --brand-ink: #4b2a8a;
+  --chart-grid: rgba(0, 0, 0, .08);
+}
+[data-bs-theme="dark"] {
+  --brand: #7c55d6;
+  --brand-dark: #6a43c2;
+  --page-bg: #120f1d;
+  --brand-soft: #2a2145;
+  --brand-ink: #c3adf7;
+  --chart-grid: rgba(255, 255, 255, .09);
+  --bs-body-bg: #1a1628;
+  --bs-secondary-bg: #231e35;
+  --bs-tertiary-bg: #201b31;
+  --bs-border-color: #352f4d;
+}
+
+/* 2. BASE */
+body {
+  background: var(--page-bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+main { flex: 1 0 auto; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.btn-primary {
+  --bs-btn-bg: var(--brand); --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand-dark); --bs-btn-hover-border-color: var(--brand-dark);
+  --bs-btn-active-bg: var(--brand-dark); --bs-btn-active-border-color: var(--brand-dark);
+  --bs-btn-disabled-bg: var(--brand); --bs-btn-disabled-border-color: var(--brand);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--brand-ink); --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand); --bs-btn-hover-border-color: var(--brand); --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--brand-dark); --bs-btn-active-border-color: var(--brand-dark);
+}
+.nav-pills { --bs-nav-pills-link-active-bg: var(--brand); }
+.nav-pills .nav-link:not(.active) { color: var(--brand-ink); }
+.page-link { color: var(--brand-ink); }
+.page-item.active .page-link { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--accent); color: #000; padding: .5rem 1rem; z-index: 2000; }
+.skip-link:focus { left: 0; }
+
+/* 3. AUTH */
+.auth-body {
+  position: relative; justify-content: center;
+  background: linear-gradient(135deg, #34196a 0%, #6b3fb5 60%, #8e5fd0 100%);
+  background-attachment: fixed;
+}
+.auth-shell { max-width: 960px; }
+.auth-hero { background: linear-gradient(160deg, #34196a, #5a35a3); }
+.demo-box { background: var(--brand-soft); border-left: 4px solid var(--brand); padding: .75rem 1rem; border-radius: .5rem; }
+
+/* 4. LAYOUT */
+.navbar-brand-text { font-weight: 700; letter-spacing: .2px; }
+.app-navbar { background: #34196a; }
+html[data-bs-theme="dark"] .app-navbar { background: #241046; }
+.app-navbar .nav-link { color: rgba(255, 255, 255, .8); border-radius: .5rem; padding: .5rem .9rem; }
+.app-navbar .nav-link:hover { color: #fff; background: rgba(255, 255, 255, .1); }
+.app-navbar .nav-link.active { color: #fff; background: rgba(255, 255, 255, .2); font-weight: 600; }
+.app-footer { background: #1e1239; color: rgba(255, 255, 255, .75); margin-top: 3rem; }
+.app-footer a { color: #fff; text-decoration: none; }
+.app-footer a:hover { text-decoration: underline; }
+
+/* 5. COMPONENTS */
+.card { border: 0; border-radius: var(--radius); }
+.card-header { background: transparent; }
+.kpi { border-left: 5px solid var(--brand); }
+.kpi .kpi-icon { width: 48px; height: 48px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); color: var(--brand-ink); font-size: 1.4rem; }
+.kpi .kpi-value { font-size: 1.6rem; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.chart-wrap { position: relative; height: 300px; }
+.chart-wrap.short { height: 260px; }
+.thead-soft th { background: var(--bs-tertiary-bg); white-space: nowrap; }
+.sort-btn { background: none; border: 0; font-weight: 600; padding: 0; color: inherit; white-space: nowrap; }
+.sort-btn:hover { color: var(--brand-ink); }
+.category-pill { background: var(--brand-soft); color: var(--brand-ink); }
+.sch-card { transition: transform .15s ease, box-shadow .15s ease; }
+.sch-card:hover { transform: translateY(-3px); box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important; }
+.sch-match { outline: 2px solid var(--bs-success); }
+.empty-state { text-align: center; padding: 3rem 1rem; color: var(--bs-secondary-color); }
+.empty-state i { font-size: 2.5rem; display: block; margin-bottom: .5rem; }
+
+.role-pill { display: inline-block; padding: .15rem .7rem; border-radius: 999px; font-size: .78rem; font-weight: 600; }
+.role-admin { background: var(--brand-soft); color: var(--brand-ink); }
+.role-officer { background: rgba(25, 135, 84, .15); color: var(--bs-success-text-emphasis, #0f5132); }
+.role-student { background: rgba(255, 193, 7, .22); color: var(--bs-warning-text-emphasis, #664d03); }
+
+/* Student "My Applications" status notes */
+.status-note { border-radius: .5rem; padding: .6rem .8rem; font-size: .88rem; }
+.status-ok   { background: rgba(25, 135, 84, .14);  color: var(--bs-success-text-emphasis, #0f5132); }
+.status-bad  { background: rgba(220, 53, 69, .13);  color: var(--bs-danger-text-emphasis, #58151c); }
+.status-wait { background: rgba(255, 193, 7, .2);   color: var(--bs-warning-text-emphasis, #664d03); }
+
+.activity-list { list-style: none; padding: 0; margin: 0; }
+.activity-item { padding: .65rem 0; border-bottom: 1px solid var(--bs-border-color); }
+.activity-item:last-child { border-bottom: 0; }
+
+/* Skeleton loading */
+.skeleton { position: relative; overflow: hidden; background: var(--bs-secondary-bg); min-height: 110px; }
+.skeleton::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+/* 6. UTILITIES / RESPONSIVE */
+.min-w-0 { min-width: 0; }
+@media (max-width: 575.98px) {
+  .chart-wrap { height: 250px; }
+  .kpi .kpi-value { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media print {
+  .app-navbar, .app-footer, .btn, .skip-link { display: none !important; }
+  body { background: #fff; }
+}
